@@ -1,5 +1,5 @@
 {
-	"name": "unimind",
+	"name": "unimind-backend",
 	"version": "1.0.0",
 	"description": "mood tracking web app",
 	"type": "module",

@@ -5,19 +5,15 @@ dotenv.config();
 import connectDB from "./config/db.js";
 connectDB();
 
-import { notFound, errorHandler } from "./middleware/errorHandler.js";
+import MoodRoutes from "./routes/moodRoutes.js";
 
 const port = process.env.PORT || 5000;
 const app = express();
 
-app.get("/", (req, res) => {
-	res.send("API is running...");
+app.use(express.json());
+
+app.use("/api/mood", MoodRoutes);
+
+app.listen(port, () => {
+	console.log(`Server running in ${process.env.NODE_ENV} mode on port ${port}`);
 });
-
-// Error handling middleware
-app.use(notFound);
-app.use(errorHandler);
-
-app.listen(port, () =>
-	console.log(`Server running in ${process.env.NODE_ENV} mode on port ${port}`)
-);

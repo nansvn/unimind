@@ -34,10 +34,12 @@ export const endpoints = {
     login: '/api/auth/login',
     register: '/api/auth/register',
   },
-  mail: {
-    list: '/api/mail/list',
-    details: '/api/mail/details',
-    labels: '/api/mail/labels',
+  mood: {
+    list: '/api/mood',
+    detail: (id) => `/api/mood/${id}`,
+    create: '/api/mood',
+    update: (id) => `/api/mood/${id}`,
+    delete: (id) => `/api/mood/${id}`,
   },
   post: {
     list: '/api/post/list',

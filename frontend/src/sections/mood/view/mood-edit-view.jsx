@@ -28,7 +28,7 @@ export default function MoodEditView({ id }) {
             href: paths.dashboard.root,
           },
           {
-            name: 'Job',
+            name: 'Mood',
             href: paths.dashboard.mood.root,
           },
           { name: currentJob?.title },

@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
-import { useForm, Controller } from 'react-hook-form';
 import { useMemo, useState, useEffect } from 'react';
+import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import Chip from '@mui/material/Chip';
@@ -18,6 +18,8 @@ import { paths } from 'src/routes/paths';
 import { useRouter } from 'src/routes/hooks';
 
 import { useResponsive } from 'src/hooks/use-responsive';
+
+import { updateMood, createMood } from 'src/api/mood';
 
 import { JOB_SKILL_OPTIONS } from 'src/_mock';
 
@@ -112,17 +114,27 @@ export default function MoodNewEditForm({ currentMood }) {
   };
 
   const onSubmit = handleSubmit(async (data) => {
+    const moodData = {
+      ...data,
+      mood: selectedSubIconId,
+    };
+    console.log(moodData);
     try {
-      console.info('Selected Emoji:', selectedMainIconId);
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      reset();
-      enqueueSnackbar(currentMood ? 'Update success!' : 'Create success!');
-      router.push(paths.dashboard.mood.root);
-      console.info('DATA', data);
+      // Decide whether to create a new mood or update an existing one
+      if (currentMood) {
+        await updateMood(currentMood._id, moodData);
+      } else {
+        await createMood(moodData);
+      }
+
+      enqueueSnackbar(currentMood ? 'Update success!' : 'Create success!', { variant: 'success' });
+      router.push('/dashboard/mood'); // Adjust the path as needed
     } catch (error) {
       console.error(error);
+      enqueueSnackbar('Failed to save mood!', { variant: 'error' });
     }
   });
+
   const iconSelector = (
     <Stack spacing={2}>
       <Typography variant="subtitle2">Mood right now</Typography>
@@ -180,7 +192,7 @@ export default function MoodNewEditForm({ currentMood }) {
           />
           <Controller
             control={methods.control}
-            name="schoolActivity"
+            name="schoolActivities"
             render={({ field }) => (
               <SchoolOptions
                 school={field.value}
@@ -191,7 +203,7 @@ export default function MoodNewEditForm({ currentMood }) {
 
           <Controller
             control={methods.control}
-            name="socialActivity"
+            name="socialActivities"
             render={({ field }) => (
               <SocialOptions
                 social={field.value}
