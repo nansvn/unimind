@@ -1,0 +1,32 @@
+{
+	"name": "unimind",
+	"version": "1.0.0",
+	"description": "mood tracking web app",
+	"type": "module",
+	"main": "server.js",
+	"scripts": {
+		"start": "node backend/server.js",
+		"server": "nodemon backend/server.js",
+		"client": "npm start --prefix frontend",
+		"dev": "concurrently \"npm run client\" \"npm run server\"",
+		"data:import": "node backend/seeder.js",
+		"data:destroy": "node backend/seeder.js -d"
+	},
+	"author": "Nan",
+	"license": "MIT",
+	"dependencies": {
+		"express": "^4.19.2",
+		"bcryptjs": "^2.4.3",
+		"color": "^4.2.3",
+		"colors": "^1.4.0",
+		"mongodb": "^6.4.0",
+		"mongoose": "^8.2.1",
+		"mysql2": "^3.9.2"
+	},
+	"devDependencies": {
+		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+		"concurrently": "^8.2.2",
+		"dotenv": "^16.4.5",
+		"nodemon": "^3.1.0"
+	}
+}
