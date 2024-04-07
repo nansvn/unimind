@@ -22,11 +22,12 @@ import {
   JOB_EMPLOYMENT_TYPE_OPTIONS,
 } from 'src/_mock';
 
+import { useAuthContext } from 'src/auth/hooks';
 import Iconify from 'src/components/iconify';
 import EmptyContent from 'src/components/empty-content';
 import { useSettingsContext } from 'src/components/settings';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
-import JobList from '../mood-list';
+import MoodList from '../mood-list';
 import MoodSort from '../mood-sort';
 import JobFilters from '../mood-filters';
 import JobFiltersResult from '../mood-filters-result';
@@ -44,6 +45,7 @@ const defaultFilters = {
 // ----------------------------------------------------------------------
 
 export default function MoodListView() {
+  const { user } = useAuthContext();
   const settings = useSettingsContext();
 
   const openFilters = useBoolean();
@@ -161,7 +163,7 @@ export default function MoodListView() {
 
       {notFound && <EmptyContent filled title="No Data" sx={{ py: 10 }} />}
 
-      <JobList jobs={dataFiltered} news={_analyticPosts} />
+      <MoodList userId={user._id} />
     </Container>
   );
 }

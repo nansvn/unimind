@@ -91,16 +91,13 @@ export function AuthProvider({ children }) {
 
   // LOGIN
   const login = useCallback(async (email, password) => {
-    const data = {
-      email,
-      password,
-    };
+    const data = { email, password };
 
     const response = await axios.post(endpoints.auth.login, data);
+    const { token: accessToken, user } = response.data;
 
-    const { accessToken, user } = response.data;
-
-    setSession(accessToken);
+    sessionStorage.setItem(STORAGE_KEY, accessToken);
+    sessionStorage.setItem('userInfo', JSON.stringify(user));
 
     dispatch({
       type: 'LOGIN',
@@ -114,19 +111,20 @@ export function AuthProvider({ children }) {
   }, []);
 
   // REGISTER
-  const register = useCallback(async (email, password, firstName, lastName) => {
+  const register = useCallback(async (email, password, firstname, lastname) => {
     const data = {
       email,
       password,
-      firstName,
-      lastName,
+      firstname,
+      lastname,
     };
 
     const response = await axios.post(endpoints.auth.register, data);
 
-    const { accessToken, user } = response.data;
+    const { token: accessToken, user } = response.data;
 
     sessionStorage.setItem(STORAGE_KEY, accessToken);
+    sessionStorage.setItem('userInfo', JSON.stringify(user));
 
     dispatch({
       type: 'REGISTER',

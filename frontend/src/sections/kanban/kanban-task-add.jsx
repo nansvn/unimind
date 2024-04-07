@@ -23,13 +23,7 @@ export default function KanbanTaskAdd({ status, onAddTask, onCloseAddTask }) {
       attachments: [],
       labels: [],
       comments: [],
-      assignee: [],
       due: [null, null],
-      reporter: {
-        id: _mock.id(16),
-        name: _mock.fullName(16),
-        avatarUrl: _mock.image.avatar(16),
-      },
     }),
     [name, status]
   );

@@ -5,7 +5,7 @@ import { fetcher, endpoints } from 'src/utils/axios';
 
 // ----------------------------------------------------------------------
 
-const URL = endpoints.kanban;
+const URL = 'https://api-dev-minimal-v510.vercel.app/api/kanban';
 
 const options = {
   revalidateIfStale: false,

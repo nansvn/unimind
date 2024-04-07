@@ -20,11 +20,8 @@ import CustomDateRangePicker, { useDateRangePicker } from 'src/components/custom
 
 import KanbanInputName from './kanban-input-name';
 import KanbanDetailsToolbar from './kanban-details-toolbar';
-import KanbanContactsDialog from './kanban-contacts-dialog';
 import KanbanDetailsPriority from './kanban-details-priority';
 import KanbanDetailsAttachments from './kanban-details-attachments';
-import KanbanDetailsCommentList from './kanban-details-comment-list';
-import KanbanDetailsCommentInput from './kanban-details-comment-input';
 
 // ----------------------------------------------------------------------
 
@@ -108,57 +105,6 @@ export default function KanbanDetails({
     />
   );
 
-  const renderReporter = (
-    <Stack direction="row" alignItems="center">
-      <StyledLabel>Reporter</StyledLabel>
-      <Avatar alt={task.reporter.name} src={task.reporter.avatarUrl} />
-    </Stack>
-  );
-
-  const renderAssignee = (
-    <Stack direction="row">
-      <StyledLabel sx={{ height: 40, lineHeight: '40px' }}>Assignee</StyledLabel>
-
-      <Stack direction="row" flexWrap="wrap" alignItems="center" spacing={1}>
-        {task.assignee.map((user) => (
-          <Avatar key={user.id} alt={user.name} src={user.avatarUrl} />
-        ))}
-
-        <Tooltip title="Add assignee">
-          <IconButton
-            onClick={contacts.onTrue}
-            sx={{
-              bgcolor: (theme) => alpha(theme.palette.grey[500], 0.08),
-              border: (theme) => `dashed 1px ${theme.palette.divider}`,
-            }}
-          >
-            <Iconify icon="mingcute:add-line" />
-          </IconButton>
-        </Tooltip>
-
-        <KanbanContactsDialog
-          assignee={task.assignee}
-          open={contacts.value}
-          onClose={contacts.onFalse}
-        />
-      </Stack>
-    </Stack>
-  );
-
-  const renderLabel = (
-    <Stack direction="row">
-      <StyledLabel sx={{ height: 24, lineHeight: '24px' }}>Labels</StyledLabel>
-
-      {!!task.labels.length && (
-        <Stack direction="row" flexWrap="wrap" alignItems="center" spacing={1}>
-          {task.labels.map((label) => (
-            <Chip key={label} color="info" label={label} size="small" variant="soft" />
-          ))}
-        </Stack>
-      )}
-    </Stack>
-  );
-
   const renderDueDate = (
     <Stack direction="row" alignItems="center">
       <StyledLabel> Due date </StyledLabel>
@@ -227,9 +173,6 @@ export default function KanbanDetails({
       <KanbanDetailsAttachments attachments={task.attachments} />
     </Stack>
   );
-
-  const renderComments = <KanbanDetailsCommentList comments={task.comments} />;
-
   return (
     <Drawer
       open={openDetails}
@@ -271,12 +214,6 @@ export default function KanbanDetails({
         >
           {renderName}
 
-          {renderReporter}
-
-          {renderAssignee}
-
-          {renderLabel}
-
           {renderDueDate}
 
           {renderPriority}
@@ -285,11 +222,7 @@ export default function KanbanDetails({
 
           {renderAttachments}
         </Stack>
-
-        {!!task.comments.length && renderComments}
       </Scrollbar>
-
-      <KanbanDetailsCommentInput />
     </Drawer>
   );
 }

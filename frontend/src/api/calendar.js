@@ -5,7 +5,7 @@ import { fetcher, endpoints } from 'src/utils/axios';
 
 // ----------------------------------------------------------------------
 
-const URL = endpoints.calendar;
+const URL = 'https://api-dev-minimal-v510.vercel.app/api/calendar';
 
 const options = {
   revalidateIfStale: false,

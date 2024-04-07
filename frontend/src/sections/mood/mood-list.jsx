@@ -1,20 +1,21 @@
 import PropTypes from 'prop-types';
-import { useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
+
+import axios, { endpoints } from 'src/utils/axios';
 
 import Box from '@mui/material/Box';
 import Pagination, { paginationClasses } from '@mui/material/Pagination';
 
 import { paths } from 'src/routes/paths';
-import { useRouter } from 'src/routes/hooks';
 import { _analyticPosts } from 'src/_mock';
+import { useRouter } from 'src/routes/hooks';
 
-import JobItem from './mood-item';
+import MoodItem from './mood-item';
 
 // ----------------------------------------------------------------------
 
-export default function JobList({ jobs, news }) {
+export default function MoodList({ userId }) {
   const router = useRouter();
-
   const handleEdit = useCallback(
     (id) => {
       router.push(paths.dashboard.mood.edit(id));
@@ -25,6 +26,25 @@ export default function JobList({ jobs, news }) {
   const handleDelete = useCallback((id) => {
     console.info('DELETE', id);
   }, []);
+
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(endpoints.mood.list(userId));
+        setData(response.data);
+      } catch (err) {
+        setError(err.toString());
+      }
+    };
+    fetchData();
+  }, [userId]);
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   return (
     <>
@@ -37,18 +57,17 @@ export default function JobList({ jobs, news }) {
           md: 'repeat(3, 1fr)',
         }}
       >
-        {jobs.map((job) => (
-          <JobItem
-            key={job.id}
-            job={job}
-            news={_analyticPosts}
-            onEdit={() => handleEdit(job.id)}
-            onDelete={() => handleDelete(job.id)}
+        {data.map((record) => (
+          <MoodItem
+            key={record._id}
+            record={record}
+            onEdit={() => handleEdit(record.id)}
+            onDelete={() => handleDelete(record.id)}
           />
         ))}
       </Box>
 
-      {jobs.length > 8 && (
+      {data.length > 8 && (
         <Pagination
           count={8}
           sx={{
@@ -63,7 +82,6 @@ export default function JobList({ jobs, news }) {
   );
 }
 
-JobList.propTypes = {
-  jobs: PropTypes.array,
-  news: PropTypes.array,
+MoodList.propTypes = {
+  userId: PropTypes.array,
 };

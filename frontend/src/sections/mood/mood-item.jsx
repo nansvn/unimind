@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 import PropTypes from 'prop-types';
 
 import Box from '@mui/material/Box';
@@ -14,10 +16,10 @@ import CustomPopover, { usePopover } from 'src/components/custom-popover';
 
 // ----------------------------------------------------------------------
 
-export default function JobItem({ news, job, onEdit, onDelete }) {
+export default function MoodItem({ record, onEdit, onDelete }) {
   const popover = usePopover();
-  const { coverUrl } = news;
-  const { company, candidates, experience } = job;
+  const { mood, comment, createdAt } = record;
+  const formattedCreatedAt = moment(createdAt).format('MMMM D, YYYY, h:mm A');
 
   return (
     <>
@@ -27,12 +29,7 @@ export default function JobItem({ news, job, onEdit, onDelete }) {
         </IconButton>
 
         <Stack sx={{ p: 3, pb: 1 }}>
-          <Avatar
-            alt={company.name}
-            src={coverUrl}
-            variant="rounded"
-            sx={{ width: 52, height: 52, mb: 2 }}
-          />
+          <Avatar alt={mood} src={mood} variant="rounded" sx={{ width: 52, height: 52, mb: 2 }} />
 
           <Stack
             spacing={0.5}
@@ -41,7 +38,7 @@ export default function JobItem({ news, job, onEdit, onDelete }) {
             sx={{ color: 'primary.main', typography: 'caption' }}
           >
             <Iconify width={16} icon="solar:users-group-rounded-bold" />
-            Time: {candidates.length}
+            Time: {formattedCreatedAt}
           </Stack>
         </Stack>
 
@@ -50,7 +47,6 @@ export default function JobItem({ news, job, onEdit, onDelete }) {
         <Box rowGap={1} display="grid" gridTemplateColumns="repeat(1, 1fr)" sx={{ p: 2 }}>
           {[
             {
-              label: experience,
               icon: <Iconify width={16} icon="fxemoji:note" sx={{ flexShrink: 0 }} />,
             },
           ].map((item) => (
@@ -64,7 +60,7 @@ export default function JobItem({ news, job, onEdit, onDelete }) {
             >
               {item.icon}
               <Typography variant="caption" noWrap>
-                {item.label}
+                {comment}
               </Typography>
             </Stack>
           ))}
@@ -102,9 +98,8 @@ export default function JobItem({ news, job, onEdit, onDelete }) {
   );
 }
 
-JobItem.propTypes = {
-  job: PropTypes.object,
+MoodItem.propTypes = {
+  record: PropTypes.object,
   onDelete: PropTypes.func,
   onEdit: PropTypes.func,
-  news: PropTypes.object,
 };

@@ -1,12 +1,7 @@
-import moodController from "../controllers/moodController.js";
 import express from "express";
+import { getMoodsByUserID } from "../controllers/moodController.js";
 
 const router = express.Router();
+router.route("/list/:userID").get(getMoodsByUserID);
 
-router.route("/").get(moodController.getMoods).post(moodController.createMood);
-router
-	.route("/:id")
-	.get(moodController.getMoodByID)
-	.put(moodController.updateMood)
-	.delete(moodController.deleteMood);
 export default router;

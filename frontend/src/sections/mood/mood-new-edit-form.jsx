@@ -21,7 +21,7 @@ import { useResponsive } from 'src/hooks/use-responsive';
 
 import { updateMood, createMood } from 'src/api/mood';
 
-import { JOB_SKILL_OPTIONS } from 'src/_mock';
+import { TAGS } from 'src/_mock';
 
 import { useSnackbar } from 'src/components/snackbar';
 import FormProvider, { RHFTextField, RHFAutocomplete } from 'src/components/hook-form';
@@ -223,7 +223,7 @@ export default function MoodNewEditForm({ currentMood }) {
               placeholder="+ Tags"
               multiple
               disableCloseOnSelect
-              options={JOB_SKILL_OPTIONS.map((option) => option)}
+              options={TAGS.map((option) => option)}
               getOptionLabel={(option) => option}
               renderOption={(props, option) => (
                 <li {...props} key={option}>

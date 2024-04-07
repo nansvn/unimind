@@ -9,15 +9,7 @@ export const JOB_DETAILS_TABS = [
   { value: 'candidates', label: 'Candidates' },
 ];
 
-export const JOB_SKILL_OPTIONS = [
-  'UI',
-  'UX',
-  'Html',
-  'JavaScript',
-  'TypeScript',
-  'Communication',
-  'Problem Solving',
-];
+export const TAGS = ['Happy', 'Chill', 'Special', 'Teamwork', 'Fight', 'Communication', 'Sad'];
 
 export const JOB_WORKING_SCHEDULE_OPTIONS = [
   'Monday to Friday',
@@ -170,7 +162,7 @@ export const _jobs = [...Array(12)].map((_, index) => {
     title: _mock.jobTitle(index),
     createdAt: _mock.time(index),
     expiredDate: _mock.time(index),
-    skills: JOB_SKILL_OPTIONS.slice(0, 3),
+    skills: TAGS.slice(0, 3),
     totalViews: _mock.number.nativeL(index),
     workingSchedule: JOB_WORKING_SCHEDULE_OPTIONS.slice(0, 2),
   };

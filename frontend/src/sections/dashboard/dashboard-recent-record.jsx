@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -11,21 +12,39 @@ import ListItemText from '@mui/material/ListItemText';
 
 import { paths } from 'src/routes/paths';
 
+import axios, { endpoints } from 'src/utils/axios';
+
 import { fToNow } from 'src/utils/format-time';
 
 import Iconify from 'src/components/iconify';
 import Scrollbar from 'src/components/scrollbar';
 
 // ----------------------------------------------------------------------
+export default function RecentRecord({ title, userId, ...other }) {
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
 
-export default function RecentRecord({ title, subheader, list, ...other }) {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(endpoints.mood.list(userId));
+        setData(response.data);
+      } catch (err) {
+        setError(err.toString());
+      }
+    };
+    fetchData();
+  }, [userId]);
+
+  if (error) return <div>{error}</div>;
+
   return (
     <Card {...other}>
-      <CardHeader title={title} subheader={subheader} sx={{ mb: 1 }} />
+      <CardHeader title={title} sx={{ mb: 1 }} />
 
       <Scrollbar>
-        {list.map((news) => (
-          <NewsItem key={news.id} news={news} />
+        {data.map((record) => (
+          <RecordItem key={record._id} record={record} />
         ))}
       </Scrollbar>
 
@@ -45,15 +64,14 @@ export default function RecentRecord({ title, subheader, list, ...other }) {
 }
 
 RecentRecord.propTypes = {
-  list: PropTypes.array,
-  subheader: PropTypes.string,
+  userId: PropTypes.string,
   title: PropTypes.string,
 };
 
 // ----------------------------------------------------------------------
 
-function NewsItem({ news }) {
-  const { coverUrl, title, description, postedAt } = news;
+function RecordItem({ record }) {
+  const { mood, comment, updatedAt } = record;
 
   return (
     <Stack
@@ -69,12 +87,12 @@ function NewsItem({ news }) {
     >
       <Avatar
         variant="rounded"
-        alt={title}
-        src={coverUrl}
-        sx={{ width: 48, height: 48, flexShrink: 0 }}
+        alt={mood}
+        src={mood}
+        sx={{ width: 50, height: 50, flexShrink: 0 }}
       />
       <ListItemText
-        secondary={description}
+        secondary={comment}
         secondaryTypographyProps={{
           mt: 0.5,
           noWrap: true,
@@ -82,12 +100,12 @@ function NewsItem({ news }) {
         }}
       />
       <Box sx={{ flexShrink: 0, color: 'text.disabled', typography: 'caption' }}>
-        {fToNow(postedAt)}
+        {fToNow(updatedAt)}
       </Box>{' '}
     </Stack>
   );
 }
 
-NewsItem.propTypes = {
-  news: PropTypes.object,
+RecordItem.propTypes = {
+  record: PropTypes.object,
 };

@@ -79,27 +79,9 @@ export default function KanbanTaskItem({ task, index, onDeleteTask, onUpdateTask
           color: 'text.disabled',
         }}
       >
-        <Iconify width={16} icon="solar:chat-round-dots-bold" sx={{ mr: 0.25 }} />
-        <Box component="span" sx={{ mr: 1 }}>
-          {task.comments.length}
-        </Box>
-
         <Iconify width={16} icon="eva:attach-2-fill" sx={{ mr: 0.25 }} />
         <Box component="span">{task.attachments.length}</Box>
       </Stack>
-
-      <AvatarGroup
-        sx={{
-          [`& .${avatarGroupClasses.avatar}`]: {
-            width: 24,
-            height: 24,
-          },
-        }}
-      >
-        {task.assignee.map((user) => (
-          <Avatar key={user.id} alt={user.name} src={user.avatarUrl} />
-        ))}
-      </AvatarGroup>
     </Stack>
   );
 
