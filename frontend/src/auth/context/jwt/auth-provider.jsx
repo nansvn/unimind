@@ -96,8 +96,7 @@ export function AuthProvider({ children }) {
     const response = await axios.post(endpoints.auth.login, data);
     const { token: accessToken, user } = response.data;
 
-    sessionStorage.setItem(STORAGE_KEY, accessToken);
-    sessionStorage.setItem('userInfo', JSON.stringify(user));
+    setSession(accessToken);
 
     dispatch({
       type: 'LOGIN',

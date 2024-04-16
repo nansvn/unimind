@@ -27,6 +27,7 @@ export default function RHFTextField({ name, helperText, type, ...other }) {
           }}
           error={!!error}
           helperText={error ? error?.message : helperText}
+          sx={{ backgroundColor: 'rgb(255 255 255 / 50%)' }}
           {...other}
         />
       )}

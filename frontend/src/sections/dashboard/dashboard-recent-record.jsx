@@ -12,9 +12,10 @@ import ListItemText from '@mui/material/ListItemText';
 
 import { paths } from 'src/routes/paths';
 
+import { fToNow } from 'src/utils/format-time';
 import axios, { endpoints } from 'src/utils/axios';
 
-import { fToNow } from 'src/utils/format-time';
+import { subIcons } from 'src/_mock/_mood';
 
 import Iconify from 'src/components/iconify';
 import Scrollbar from 'src/components/scrollbar';
@@ -43,7 +44,7 @@ export default function RecentRecord({ title, userId, ...other }) {
       <CardHeader title={title} sx={{ mb: 1 }} />
 
       <Scrollbar>
-        {data.map((record) => (
+        {data.slice(0, 5).map((record) => (
           <RecordItem key={record._id} record={record} />
         ))}
       </Scrollbar>
@@ -69,9 +70,16 @@ RecentRecord.propTypes = {
 };
 
 // ----------------------------------------------------------------------
-
 function RecordItem({ record }) {
   const { mood, comment, updatedAt } = record;
+
+  const [imageUrl, setImageUrl] = useState('');
+
+  useEffect(() => {
+    if (mood) {
+      setImageUrl(subIcons[mood]);
+    }
+  }, [mood]);
 
   return (
     <Stack
@@ -88,7 +96,7 @@ function RecordItem({ record }) {
       <Avatar
         variant="rounded"
         alt={mood}
-        src={mood}
+        src={imageUrl}
         sx={{ width: 50, height: 50, flexShrink: 0 }}
       />
       <ListItemText

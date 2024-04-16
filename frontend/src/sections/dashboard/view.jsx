@@ -61,7 +61,7 @@ export default function OverviewEcommerceView() {
         </Grid>
 
         <Grid xs={12} md={6} lg={8}>
-          <RecentRecord title="Most Recent" userId={user._id} />
+          <RecentRecord title="Most Recent" userId={user?._id} />
         </Grid>
 
         <Grid xs={12} md={6} lg={4}>

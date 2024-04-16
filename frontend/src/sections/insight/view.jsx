@@ -6,7 +6,6 @@ import { _bookingReview } from 'src/_mock';
 
 import { useSettingsContext } from 'src/components/settings';
 
-import InsightYearView from './insight-year-view';
 import InsightPieChart from './insight-pie-chart';
 import InsightBarChart from './insight-bar-chart';
 import InsightSuggestion from './insight-suggestion-brief';

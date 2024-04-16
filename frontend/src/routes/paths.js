@@ -26,6 +26,7 @@ export const paths = {
     todo: `${ROOTS.DASHBOARD}/todo`,
     insight: `${ROOTS.DASHBOARD}/insight`,
     suggestion: `${ROOTS.DASHBOARD}/suggestion`,
+    user: `${ROOTS.DASHBOARD}/user`,
     // MOOD
     mood: {
       root: `${ROOTS.DASHBOARD}/mood`,

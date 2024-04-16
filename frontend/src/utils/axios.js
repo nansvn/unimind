@@ -49,9 +49,9 @@ export const endpoints = {
     register: '/api/auth/register',
   },
   mood: {
+    root: '/api/mood/',
     list: (uid) => `/api/mood/list/${uid}`,
     detail: (id) => `/api/mood/${id}`,
-    create: '/api/mood',
     update: (id) => `/api/mood/${id}`,
     delete: (id) => `/api/mood/${id}`,
   },

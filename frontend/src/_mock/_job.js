@@ -11,11 +11,7 @@ export const JOB_DETAILS_TABS = [
 
 export const TAGS = ['Happy', 'Chill', 'Special', 'Teamwork', 'Fight', 'Communication', 'Sad'];
 
-export const JOB_WORKING_SCHEDULE_OPTIONS = [
-  'Monday to Friday',
-  'Weekend availability',
-  'Day shift',
-];
+export const Mood_Type = ['Blue', 'Green', 'Pink', 'Yellow', 'Grey'];
 
 export const JOB_EMPLOYMENT_TYPE_OPTIONS = [
   { value: 'Full-time', label: 'Full-time' },
@@ -67,9 +63,8 @@ export const JOB_PUBLISH_OPTIONS = [
   },
 ];
 
-export const JOB_SORT_OPTIONS = [
+export const MOOD_SORT_OPTIONS = [
   { value: 'latest', label: 'Latest' },
-  { value: 'popular', label: 'Popular' },
   { value: 'oldest', label: 'Oldest' },
 ];
 
@@ -131,10 +126,6 @@ export const _jobs = [...Array(12)].map((_, index) => {
   const experience =
     JOB_EXPERIENCE_OPTIONS.map((option) => option.label)[index] || JOB_EXPERIENCE_OPTIONS[1].label;
 
-  const employmentTypes = (index % 2 && ['Part-time']) ||
-    (index % 3 && ['On Demand']) ||
-    (index % 4 && ['Negotiable']) || ['Full-time'];
-
   const company = {
     name: _mock.companyName(index),
     logo: _mock.image.company(index),
@@ -152,9 +143,9 @@ export const _jobs = [...Array(12)].map((_, index) => {
     publish,
     company,
     benefits,
+    Mood_Type,
     locations,
     experience,
-    employmentTypes,
     content: CONTENT,
     candidates: CANDIDATES,
     date: Dates,
@@ -164,6 +155,5 @@ export const _jobs = [...Array(12)].map((_, index) => {
     expiredDate: _mock.time(index),
     skills: TAGS.slice(0, 3),
     totalViews: _mock.number.nativeL(index),
-    workingSchedule: JOB_WORKING_SCHEDULE_OPTIONS.slice(0, 2),
   };
 });

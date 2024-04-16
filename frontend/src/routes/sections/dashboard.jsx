@@ -13,6 +13,7 @@ const CalendarPage = lazy(() => import('src/pages/dashboard/calendar'));
 const InsightPage = lazy(() => import('src/pages/dashboard/insight'));
 const SuggestionPage = lazy(() => import('src/pages/dashboard/suggestion'));
 const TodoPage = lazy(() => import('src/pages/dashboard/todo'));
+const UserPage = lazy(() => import('src/pages/dashboard/user'));
 // ----------------------------------------------------------------------
 // Mood
 const JobListPage = lazy(() => import('src/pages/dashboard/mood/list'));
@@ -38,6 +39,7 @@ export const dashboardRoutes = [
       { path: 'insight', element: <InsightPage /> },
       { path: 'todo', element: <TodoPage /> },
       { path: 'suggestion', element: <SuggestionPage /> },
+      { path: 'user', element: <UserPage /> },
       {
         path: 'mood',
         children: [

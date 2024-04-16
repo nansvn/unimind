@@ -128,6 +128,7 @@ export default function RHFAutocomplete({ name, label, type, helperText, placeho
                   ...params.inputProps,
                   autoComplete: 'new-password',
                 }}
+                sx={{ backgroundColor: 'rgb(255 255 255 / 50%)' }}
               />
             )}
             {...other}
