@@ -1,5 +1,7 @@
-import { Link } from 'react-router-dom';
+import queryString from 'query-string';
+import { Link, useLocation } from 'react-router-dom';
 
+import { Alert } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
@@ -20,13 +22,24 @@ import Weather from './dashboard-widget-weather';
 import RecentRecord from './dashboard-recent-record';
 
 // ----------------------------------------------------------------------
-
 export default function OverviewEcommerceView() {
   const { user } = useAuthContext();
+  const location = useLocation();
+  const params = queryString.parse(location.search);
   const settings = useSettingsContext();
 
   return (
     <Container maxWidth={settings.themeStretch ? false : 'xl'}>
+      {params.registered === 'true' && (
+        <Alert severity="success" sx={{ mb: 2 }} onClose={() => {}}>
+          Registration Successful! Welcome to UniMind.
+        </Alert>
+      )}
+      {params.login === 'true' && (
+        <Alert severity="success" sx={{ mb: 2 }} onClose={() => {}}>
+          Login Successfully
+        </Alert>
+      )}
       <Grid container spacing={3}>
         <Grid xs={12} md={8}>
           <Welcome

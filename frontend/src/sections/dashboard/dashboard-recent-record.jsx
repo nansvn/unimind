@@ -8,6 +8,7 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
 import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
 import ListItemText from '@mui/material/ListItemText';
 
 import { paths } from 'src/routes/paths';
@@ -44,21 +45,36 @@ export default function RecentRecord({ title, userId, ...other }) {
       <CardHeader title={title} sx={{ mb: 1 }} />
 
       <Scrollbar>
-        {data.slice(0, 5).map((record) => (
-          <RecordItem key={record._id} record={record} />
-        ))}
+        {data.length > 0 ? (
+          data.slice(0, 5).map((record) => <RecordItem key={record._id} record={record} />)
+        ) : (
+          <Typography variant="subtitle2" sx={{ py: 5, textAlign: 'center' }}>
+            Seems like you do not have any record yet, wanna create one?
+          </Typography>
+        )}
       </Scrollbar>
-
       <Box sx={{ p: 2, textAlign: 'right' }}>
-        <Button
-          size="small"
-          color="inherit"
-          endIcon={<Iconify icon="eva:arrow-ios-forward-fill" width={18} sx={{ ml: -0.5 }} />}
-          component={Link}
-          to={paths.dashboard.mood.root}
-        >
-          View All
-        </Button>
+        {data.length > 0 ? (
+          <Button
+            size="small"
+            color="inherit"
+            endIcon={<Iconify icon="eva:arrow-ios-forward-fill" width={18} sx={{ ml: -0.5 }} />}
+            component={Link}
+            to={paths.dashboard.mood.root}
+          >
+            View All
+          </Button>
+        ) : (
+          <Button
+            size="medium"
+            color="primary"
+            endIcon={<Iconify icon="eva:plus-circle-outline" width={18} sx={{ ml: -0.5 }} />}
+            component={Link}
+            to={paths.dashboard.mood.new}
+          >
+            Record Now
+          </Button>
+        )}
       </Box>
     </Card>
   );

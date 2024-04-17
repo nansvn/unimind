@@ -9,13 +9,17 @@ export default function useCarousel(props) {
 
   const carouselRef = useRef(null);
 
-  const [currentIndex, setCurrentIndex] = useState(props?.initialSlide || 0);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const [nav, setNav] = useState(undefined);
 
   const rtl = theme.direction === 'rtl';
 
   const carouselSettings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
     arrows: false,
     dots: !!props?.customPaging,
     rtl,

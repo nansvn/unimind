@@ -96,9 +96,9 @@ export function fShortenNumber(inputValue) {
 export function fData(inputValue) {
   if (!inputValue) return '';
 
-  if (inputValue === 0) return '0 Bytes';
+  if (inputValue === 0) return '0 records';
 
-  const units = ['bytes', 'Kb', 'Mb', 'Gb', 'Tb', 'Pb', 'Eb', 'Zb', 'Yb'];
+  const units = ['records', 'Kb', 'Mb', 'Gb', 'Tb', 'Pb', 'Eb', 'Zb', 'Yb'];
 
   const decimal = 2;
 

@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import queryString from 'query-string';
 import PropTypes from 'prop-types';
 import { useMemo, useState, useEffect } from 'react';
 import { useForm, Controller } from 'react-hook-form';
@@ -21,9 +22,8 @@ import { useResponsive } from 'src/hooks/use-responsive';
 import axios, { endpoints } from 'src/utils/axios';
 
 import { useAuthContext } from 'src/auth/hooks';
-import { TAGS, subIcons, mainIcons } from 'src/_mock/_mood';
+import { TAGS, subIcons, mainIcons, findIconIds } from 'src/_mock/_mood';
 
-import { useSnackbar } from 'src/components/snackbar';
 import FormProvider, { RHFTextField, RHFAutocomplete } from 'src/components/hook-form';
 
 import SchoolOptions from './selectors/selector-school';
@@ -33,10 +33,8 @@ import WeatherOptions from './selectors/selector-weather';
 // ----------------------------------------------------------------------
 export default function MoodNewEditForm({ currentMood }) {
   const { user } = useAuthContext();
-
   const router = useRouter();
   const mdUp = useResponsive('up', 'md');
-  const { enqueueSnackbar } = useSnackbar();
 
   const NewMoodSchema = Yup.object().shape({
     tags: Yup.array().min(1, 'Choose at least one tag'),
@@ -45,7 +43,12 @@ export default function MoodNewEditForm({ currentMood }) {
 
   const defaultValues = useMemo(
     () => ({
-      tags: currentMood?.skills || [],
+      tags: currentMood?.tags || [],
+      comment: currentMood?.comment || [],
+      mood: currentMood?.mood || '',
+      weather: currentMood?.weather || '',
+      schoolActivities: currentMood?.schoolActivities || '',
+      socialActivities: currentMood?.socialActivities || '',
     }),
     [currentMood]
   );
@@ -61,15 +64,24 @@ export default function MoodNewEditForm({ currentMood }) {
     formState: { isSubmitting },
   } = methods;
 
+  const [selectedMainIconId, setSelectedMainIconId] = useState(() => {
+    const initialIds = currentMood ? findIconIds(currentMood.mood) : {};
+    return initialIds.mainIconId || '';
+  });
+
+  const [selectedSubIconId, setSelectedSubIconId] = useState(() => {
+    const initialIds = currentMood ? findIconIds(currentMood.mood) : {};
+    return initialIds.subIconId || '';
+  });
+
   useEffect(() => {
     if (currentMood) {
       reset(defaultValues);
+      const { mainIconId, subIconId } = findIconIds(currentMood.mood);
+      setSelectedMainIconId(mainIconId);
+      setSelectedSubIconId(subIconId);
     }
   }, [currentMood, defaultValues, reset]);
-
-  const [selectedMainIconId, setSelectedMainIconId] = useState('');
-
-  const [selectedSubIconId, setSelectedSubIconId] = useState('');
 
   const handleMainIconClick = (iconId) => {
     setSelectedMainIconId(iconId);
@@ -86,23 +98,20 @@ export default function MoodNewEditForm({ currentMood }) {
       mood: selectedSubIconId,
       userID: user._id,
     };
-    console.log(moodData);
     try {
-      let response;
-      // Decide whether to create a new mood or update an existing one
+      const isNewRecord = !currentMood;
+
       if (currentMood) {
-        response = await axios.update(endpoints.mood.update(currentMood._id), moodData);
-        enqueueSnackbar('Update success!', { variant: 'success' });
+        await axios.put(endpoints.mood.update(currentMood._id), moodData);
       } else {
-        response = await axios.post(endpoints.mood.root, moodData);
-        enqueueSnackbar('Create success!', { variant: 'success' });
+        await axios.post(endpoints.mood.root, moodData);
       }
-      console.log(response);
-      enqueueSnackbar(currentMood ? 'Update success!' : 'Create success!', { variant: 'success' });
-      router.push(paths.dashboard.root);
+      const query = queryString.stringify({
+        success: isNewRecord ? 'new' : 'edit',
+      });
+      router.push(`${paths.dashboard.mood.root}?${query}`);
     } catch (error) {
       console.error(error);
-      enqueueSnackbar('Failed to save mood!', { variant: 'error' });
     }
   });
 
@@ -144,7 +153,6 @@ export default function MoodNewEditForm({ currentMood }) {
     </Stack>
   );
 
-  // Adjust your renderContent or renderActions as needed to include the emojiSelector
   const renderContent = (
     <Grid sx={{ px: '20px' }} xs={12} md={12}>
       {!mdUp && <CardHeader title="Mood" />}

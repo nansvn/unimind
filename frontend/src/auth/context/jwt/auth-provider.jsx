@@ -110,21 +110,17 @@ export function AuthProvider({ children }) {
   }, []);
 
   // REGISTER
-  const register = useCallback(async (email, password, firstname, lastname) => {
+  const register = useCallback(async (firstname, lastname, email, password) => {
     const data = {
-      email,
-      password,
       firstname,
       lastname,
+      email,
+      password,
     };
 
     const response = await axios.post(endpoints.auth.register, data);
-
     const { token: accessToken, user } = response.data;
-
-    sessionStorage.setItem(STORAGE_KEY, accessToken);
-    sessionStorage.setItem('userInfo', JSON.stringify(user));
-
+    setSession(accessToken);
     dispatch({
       type: 'REGISTER',
       payload: {

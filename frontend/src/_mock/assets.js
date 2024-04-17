@@ -268,16 +268,6 @@ export const _roles = [
 // ----------------------------------------------------------------------
 
 export const _postTitles = [
-  '10 Essential Tips for Healthy Living',
-  'The Ultimate Guide to Productivity Hacks',
-  'Exploring the Hidden Gems of [Destination]',
-  'How to Master the Art of Public Speaking',
-  'The Future of Artificial Intelligence: Trends and Insights',
-  'Delicious Recipes for a Vegan Diet',
-  "A Beginner's Guide to Investing in Stocks",
-  'The Impact of Social Media on Society',
-  '10 Must-Visit Destinations for Adventure Travelers',
-  'The Benefits of Mindfulness Meditation',
   'The Importance of Mental Health Awareness',
   'Building a Strong Personal Brand: Tips and Strategies',
   '10 Effective Strategies for Digital Marketing Success',
@@ -292,6 +282,16 @@ export const _postTitles = [
   'The Power of Positive Thinking: Transform Your Mindset',
   'The Influence of Music on Mood and Emotions',
   'Travel Photography Tips: Capturing Memories Around the World',
+  'Stay Active',
+  'Get Enough Sleep',
+  'Eat a Balanced Diet',
+  'Practice Mindfulness',
+  'Set Realistic Goals',
+  'Connect with Others',
+  'Limit Alcohol and Avoid Drugs',
+  'Seek Professional Help',
+  'Take Breaks',
+  'Engage in a Hobby',
 ];
 
 // ----------------------------------------------------------------------
@@ -507,7 +507,6 @@ export const _sentences = [
   'The artist dipped the brush into vibrant paint, bringing the canvas to life with bold strokes and vivid colors.',
   'The laughter of children echoed through the playground, filling the atmosphere with pure joy.',
 ];
-
 // ----------------------------------------------------------------------
 
 export const _descriptions = [
@@ -535,4 +534,41 @@ export const _descriptions = [
   `Sunt totam facilis. Quam commodi voluptatem veniam. Tempora deleniti itaque fugit nihil voluptas.`,
   `Ipsam aliquam velit nobis repellendus officiis aut deserunt id et. Nihil sunt aut dolores aut. Dolores est ipsa quia et laborum quidem laborum accusamus id. Facilis odit quod hic laudantium saepe omnis nisi in sint. Sed cupiditate possimus id.`,
   `Magnam non eveniet optio optio ut aliquid atque. Velit libero aspernatur quis laborum consequatur laudantium. Tempora facere optio fugit accusantium ut. Omnis aspernatur reprehenderit autem esse ut ut enim voluptatibus.`,
+];
+
+// ----------------------------------------------------------------------
+export const _title = [
+  'Stay Active',
+  'Get Enough Sleep',
+  'Eat a Balanced Diet',
+  'Practice Mindfulness',
+  'Set Realistic Goals',
+  'Connect with Others',
+  'Limit Alcohol and Avoid Drugs',
+  'Seek Professional Help',
+  'Take Breaks',
+  'Engage in a Hobby',
+  'Develop a Routine',
+  'Limit Screen Time',
+  'Practice Gratitude',
+  'Seek Sunlight Exposure',
+  'Learn Stress Management Techniques',
+];
+
+export const _suggestion = [
+  'Regular physical activity can boost your mood and energy levels, helping to reduce stress and anxiety.',
+  'Aim for 7-9 hours per night to improve overall mental health, reduce stress, and enhance mood stability.',
+  'Incorporate a variety of nutrients to support brain function and mood, such as omega-3s, fruits, and vegetables.',
+  'Mindfulness meditation can help you stay present and reduce anxiety by focusing on breath and body sensations.',
+  'Define clear, achievable goals to foster motivation and satisfaction, which can improve your mental well-being.',
+  'Social interactions can improve your mood and outlook, so spend quality time with friends and family.',
+  'Substances can exacerbate mental health issues, so it’s beneficial to consume alcohol in moderation or not at all.',
+  "Don't hesitate to consult a mental health professional if you're feeling overwhelmed or unable to cope.",
+  'Short breaks during day-to-day activities can help clear your mind and lower stress levels.',
+  'Participating in hobbies you enjoy can be therapeutic and reduce symptoms of depression and anxiety.',
+  'Create a daily routine to provide structure, improve your efficiency, and reduce feelings of chaos.',
+  'Decrease your screen time to avoid information overload and improve your mental rest and recovery.',
+  'Write down things you are thankful for each day to enhance positivity and satisfaction with life.',
+  'Get at least 30 minutes of natural sunlight each day to boost vitamin D levels and improve mood.',
+  'Learn techniques like deep breathing, yoga, or progressive muscle relaxation to manage stress effectively.',
 ];

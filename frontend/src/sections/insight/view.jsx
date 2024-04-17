@@ -2,19 +2,16 @@ import { useTheme } from '@mui/material/styles';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Unstable_Grid2';
 
-import { _bookingReview } from 'src/_mock';
-
 import { useSettingsContext } from 'src/components/settings';
 
 import InsightPieChart from './insight-pie-chart';
 import InsightBarChart from './insight-bar-chart';
-import InsightSuggestion from './insight-suggestion-brief';
 import InsightSummaryWidget from './insight-widget-summary';
 
 const TIME_LABELS = {
   week: ['Mon', 'Tue', 'Web', 'Thu', 'Fri', 'Sat', 'Sun'],
   month: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-  year: ['2018', '2019', '2020', '2021', '2022'],
+  year: ['2022', '2023', '2024', '2025', '2026'],
 };
 // ----------------------------------------------------------------------
 
@@ -32,7 +29,7 @@ export default function OverviewAppView() {
             percent={12}
             total={12}
             chart={{
-              series: [5, 18, 12, 51, 68, 11, 39, 37, 27, 20],
+              series: [5, 18, 12, 21, 18, 11, 15, 30, 6, 20],
             }}
           />
         </Grid>
@@ -44,7 +41,7 @@ export default function OverviewAppView() {
             total={10}
             chart={{
               colors: [theme.palette.info.light, theme.palette.info.main],
-              series: [20, 41, 63, 33, 28, 35, 50, 46, 11, 26],
+              series: [20, 21, 33, 13, 8, 15, 5, 7, 11, 26],
             }}
           />
         </Grid>
@@ -55,7 +52,7 @@ export default function OverviewAppView() {
             total={25}
             chart={{
               colors: [theme.palette.info.light, theme.palette.info.main],
-              series: [20, 41, 63, 33, 28, 35, 50, 46, 11, 26],
+              series: [20, 21, 1, 3, 8, 5, 5, 6, 11, 6],
             }}
           />
         </Grid>
@@ -91,53 +88,45 @@ export default function OverviewAppView() {
                 {
                   type: 'Week',
                   data: [
-                    { name: '', data: [2, 2, 1, 2, 1, 4, 2] },
-                    { name: '', data: [1, 1, 3, 6, 2, 2, 1] },
-                    { name: '', data: [1, 6, 3, 1, 7, 1, 1] },
-                    { name: '', data: [3, 2, 4, 7, 8, 9, 8] },
-                    { name: '', data: [3, 1, 2, 3, 4, 1, 1] },
+                    { name: '', data: [0, 0, 1, 2, 1, 0, 0] },
+                    { name: '', data: [2, 1, 0, 0, 2, 0, 1] },
+                    { name: '', data: [0, 0, 0, 1, 1, 1, 1] },
+                    { name: '', data: [1, 2, 1, 2, 0, 2, 0] },
+                    { name: '', data: [0, 1, 0, 0, 1, 1, 1] },
                   ],
                 },
                 {
                   type: 'Month',
                   data: [
                     {
-                      name: 'Images',
-                      data: [10, 34, 13, 56, 77, 88, 99, 77, 45, 12, 43, 34],
+                      name: '',
+                      data: [1, 4, 3, 5, 2, 3, 2, 2, 1, 2, 3, 2],
                     },
                     {
-                      name: 'Media',
-                      data: [10, 34, 13, 56, 77, 88, 99, 77, 45, 12, 43, 34],
+                      name: '',
+                      data: [0, 4, 2, 1, 1, 2, 5, 2, 4, 2, 3, 4],
                     },
                     {
-                      name: 'Documents',
-                      data: [10, 34, 13, 56, 77, 88, 99, 77, 45, 12, 43, 34],
+                      name: '',
+                      data: [0, 4, 3, 4, 2, 3, 5, 2, 4, 2, 3, 1],
                     },
                     {
-                      name: 'Other',
-                      data: [10, 34, 13, 56, 77, 88, 99, 77, 45, 12, 43, 34],
+                      name: '',
+                      data: [0, 2, 3, 1, 2, 2, 5, 2, 4, 2, 3, 2],
                     },
                   ],
                 },
                 {
                   type: 'Year',
                   data: [
-                    { name: 'Images', data: [10, 34, 13, 56, 77] },
-                    { name: 'Media', data: [10, 34, 13, 56, 77] },
-                    { name: 'Documents', data: [10, 34, 13, 56, 77] },
-                    { name: 'Other', data: [10, 34, 13, 56, 77] },
+                    { name: '', data: [10, 9, 13, 6, 2] },
+                    { name: '', data: [10, 9, 13, 6, 2] },
+                    { name: '', data: [10, 9, 13, 6, 2] },
+                    { name: '', data: [10, 9, 13, 6, 2] },
                   ],
                 },
               ],
             }}
-          />
-        </Grid>
-        <Grid xs={12} md={6} lg={4}>
-          <InsightSuggestion
-            title="Suggestions"
-            subheader={`${_bookingReview.length} Suggestions`}
-            list={_bookingReview}
-            sx={{ mt: 3 }}
           />
         </Grid>
       </Grid>

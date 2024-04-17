@@ -1,6 +1,10 @@
+import queryString from 'query-string';
+import { useLocation } from 'react-router-dom';
+
 import orderBy from 'lodash/orderBy';
 import { useState, useCallback } from 'react';
 
+import { Alert } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
@@ -23,6 +27,9 @@ import MoodSort from '../mood-sort';
 export default function MoodListView() {
   const { user } = useAuthContext();
   const settings = useSettingsContext();
+
+  const location = useLocation();
+  const { success } = queryString.parse(location.search);
 
   const [sortBy, setSortBy] = useState('latest');
 
@@ -88,7 +95,16 @@ export default function MoodListView() {
       </Stack>
 
       {notFound && <EmptyContent filled title="No Data" sx={{ py: 10 }} />}
-
+      {success === 'new' && (
+        <Alert severity="success" sx={{ mb: 2 }}>
+          Created Successfully!
+        </Alert>
+      )}
+      {success === 'edit' && (
+        <Alert severity="success" sx={{ mb: 2 }}>
+          Updated Successfully!
+        </Alert>
+      )}
       <MoodList userId={user._id} />
     </Container>
   );

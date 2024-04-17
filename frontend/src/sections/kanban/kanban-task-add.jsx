@@ -7,8 +7,6 @@ import InputBase, { inputBaseClasses } from '@mui/material/InputBase';
 
 import uuidv4 from 'src/utils/uuidv4';
 
-import { _mock } from 'src/_mock';
-
 // ----------------------------------------------------------------------
 
 export default function KanbanTaskAdd({ status, onAddTask, onCloseAddTask }) {

@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types';
 import { useState, useCallback } from 'react';
 
-import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import Drawer from '@mui/material/Drawer';
 import Button from '@mui/material/Button';
-import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import Tooltip from '@mui/material/Tooltip';
 import TextField from '@mui/material/TextField';
@@ -48,8 +46,6 @@ export default function KanbanDetails({
   const [taskName, setTaskName] = useState(task.name);
 
   const like = useBoolean();
-
-  const contacts = useBoolean();
 
   const [taskDescription, setTaskDescription] = useState(task.description);
 

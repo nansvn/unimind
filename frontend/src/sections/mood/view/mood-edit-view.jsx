@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react';
 
 import Container from '@mui/material/Container';
 
 import { paths } from 'src/routes/paths';
 
-import { _jobs } from 'src/_mock';
+import axios, { endpoints } from 'src/utils/axios';
 
 import { useSettingsContext } from 'src/components/settings';
 import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
@@ -16,7 +17,32 @@ import MoodNewEditForm from '../mood-new-edit-form';
 export default function MoodEditView({ id }) {
   const settings = useSettingsContext();
 
-  const currentJob = _jobs.find((job) => job.id === id);
+  const [currentMood, setCurrentMood] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function fetchMoodDetail() {
+      try {
+        const response = await axios.get(endpoints.mood.detail(id));
+        setCurrentMood(response.data);
+        setLoading(false);
+      } catch (err) {
+        setError(err);
+        setLoading(false);
+      }
+    }
+
+    fetchMoodDetail();
+  }, [id]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error loading the mood detail: {error.message}</div>;
+  }
 
   return (
     <Container maxWidth={settings.themeStretch ? false : 'lg'}>
@@ -31,14 +57,13 @@ export default function MoodEditView({ id }) {
             name: 'Mood',
             href: paths.dashboard.mood.root,
           },
-          { name: currentJob?.title },
         ]}
         sx={{
           mb: { xs: 3, md: 5 },
         }}
       />
 
-      <MoodNewEditForm currentJob={currentJob} />
+      <MoodNewEditForm currentMood={currentMood} />
     </Container>
   );
 }

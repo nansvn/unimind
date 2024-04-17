@@ -63,6 +63,6 @@ export default function SocialOptions({ social, onChangeSocial }) {
   );
 }
 SocialOptions.propTypes = {
-  social: PropTypes.string,
+  social: PropTypes.array,
   onChangeSocial: PropTypes.func.isRequired,
 };
