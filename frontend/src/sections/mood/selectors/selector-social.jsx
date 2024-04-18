@@ -36,26 +36,29 @@ export default function SocialOptions({ social, onChangeSocial }) {
           aria-label="social"
           sx={{ backgroundColor: 'transparent', border: 'none' }}
         >
-          <ToggleButton value="running" aria-label="running" sx={buttonStyle}>
-            <Iconify width={48} icon="emojione:couple-with-heart" />
+          <ToggleButton value="romantic" aria-label="romantic" sx={buttonStyle}>
+            <Iconify width={32} icon="emojione:couple-with-heart" />
           </ToggleButton>
-          <ToggleButton value="reading" aria-label="reading" sx={buttonStyle}>
-            <Iconify width={48} icon="emojione:anger-symbol" />
+          <ToggleButton value="family" aria-label="family" sx={buttonStyle}>
+            <Iconify width={32} icon="emojione:family" />
           </ToggleButton>
-          <ToggleButton value="f" aria-label="reading" sx={buttonStyle}>
-            <Iconify width={48} icon="emojione:man-dancing" />
+          <ToggleButton value="fight" aria-label="fight" sx={buttonStyle}>
+            <Iconify width={32} icon="emojione:anger-symbol" />
           </ToggleButton>
-          <ToggleButton value="s" aria-label="reading" sx={buttonStyle}>
-            <Iconify width={48} icon="fluent-emoji-flat:broken-heart" />
+          <ToggleButton value="heartbroken" aria-label="heartbroken" sx={buttonStyle}>
+            <Iconify width={32} icon="fluent-emoji-flat:broken-heart" />
           </ToggleButton>
-          <ToggleButton value="a" aria-label="reading" sx={buttonStyle}>
-            <Iconify width={48} icon="fluent-emoji-flat:cat" />
+          <ToggleButton value="pet" aria-label="pet" sx={buttonStyle}>
+            <Iconify width={32} icon="fluent-emoji-flat:cat" />
           </ToggleButton>
-          <ToggleButton value="a" aria-label="reading" sx={buttonStyle}>
-            <Iconify width={48} icon="fluent-emoji-flat:confetti-ball" />
+          <ToggleButton value="event" aria-label="event" sx={buttonStyle}>
+            <Iconify width={32} icon="fluent-emoji-flat:confetti-ball" />
           </ToggleButton>
-          <ToggleButton value="a" aria-label="reading" sx={buttonStyle}>
-            <Iconify width={48} icon="fluent-emoji-flat:clapping-hands" />
+          <ToggleButton value="self" aria-label="self" sx={buttonStyle}>
+            <Iconify width={32} icon="emojione:selfie-medium-skin-tone" />
+          </ToggleButton>
+          <ToggleButton value="party" aria-label="party" sx={buttonStyle}>
+            <Iconify width={32} icon="emojione:tropical-drink" />
           </ToggleButton>
         </ToggleButtonGroup>
       </Grid>

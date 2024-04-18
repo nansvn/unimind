@@ -49,13 +49,7 @@ export default function AuthClassicLayout({ children, image }) {
       alignItems="center"
       justifyContent="center"
       sx={{
-        ...bgGradient({
-          color: alpha(
-            theme.palette.background.default,
-            theme.palette.mode === 'light' ? 0.88 : 0.94
-          ),
-          imgUrl: '/assets/background/overlay_2.jpg',
-        }),
+        backgroundColor: '#F6F3E6',
       }}
     >
       <Box
@@ -63,11 +57,11 @@ export default function AuthClassicLayout({ children, image }) {
         alt="auth"
         src={image || '/assets/illustrations/illustration_dashboard.png'}
         sx={{
-          px: 5,
+          px: 4,
           maxWidth: {
             xs: 480,
             lg: 560,
-            xl: 720,
+            xl: 780,
           },
         }}
       />

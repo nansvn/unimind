@@ -26,7 +26,7 @@ const authJwt = {
       path: 'login',
       element: (
         <GuestGuard>
-          <AuthClassicLayout image="https://github.com/nansvn/Assets/blob/main/Assets/images/background2.png?raw=true">
+          <AuthClassicLayout image="https://github.com/nansvn/Assets/blob/main/Assets/images/background1.png?raw=true">
             <JwtLoginPage />
           </AuthClassicLayout>
         </GuestGuard>
@@ -36,7 +36,7 @@ const authJwt = {
       path: 'register',
       element: (
         <GuestGuard>
-          <AuthClassicLayout image="https://github.com/nansvn/Assets/blob/main/Assets/images/background2.png?raw=true">
+          <AuthClassicLayout image="https://github.com/nansvn/Assets/blob/main/Assets/images/background1.png?raw=true">
             <JwtRegisterPage />
           </AuthClassicLayout>
         </GuestGuard>

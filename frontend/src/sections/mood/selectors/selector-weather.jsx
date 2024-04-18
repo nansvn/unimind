@@ -38,19 +38,22 @@ export default function WeatherOptions({ weather, onChangeWeather }) {
           sx={{ backgroundColor: 'transparent', border: 'none' }}
         >
           <ToggleButton value="Sunny" aria-label="Sunny" sx={buttonStyle}>
-            <Iconify width={48} icon="meteocons:sunset" />
+            <Iconify width={36} icon="meteocons:sunset" />
           </ToggleButton>
           <ToggleButton value="Rainy" aria-label="Rainy" sx={buttonStyle}>
-            <Iconify width={48} icon="meteocons:partly-cloudy-night-drizzle-fill" />
+            <Iconify width={36} icon="twemoji:cloud-with-rain" />
           </ToggleButton>
           <ToggleButton value="Windy" aria-label="Windy" sx={buttonStyle}>
-            <Iconify width={48} icon="fluent-emoji:leaf-fluttering-in-wind" />
+            <Iconify width={36} icon="fluent-emoji:leaf-fluttering-in-wind" />
           </ToggleButton>
           <ToggleButton value="Cloudy" aria-label="Cloudy" sx={buttonStyle}>
-            <Iconify width={48} icon="meteocons:rainbow-clear" />
+            <Iconify width={36} icon="emojione-v1:cloud" />
           </ToggleButton>
           <ToggleButton value="Thunder" aria-label="Thunder" sx={buttonStyle}>
-            <Iconify width={48} icon="meteocons:thunderstorms-day-fill" sx={{ color: '#64b0f7' }} />
+            <Iconify width={36} icon="meteocons:thunderstorms-day-fill" sx={{ color: '#64b0f7' }} />
+          </ToggleButton>
+          <ToggleButton value="Rainbow" aria-label="Rainbow" sx={buttonStyle}>
+            <Iconify width={36} icon="noto:rainbow" sx={{ color: '#64b0f7' }} />
           </ToggleButton>
         </ToggleButtonGroup>
       </Grid>
