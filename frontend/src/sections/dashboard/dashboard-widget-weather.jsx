@@ -36,13 +36,28 @@ export default function Weather({ title, sx, ...other }) {
       <Typography variant="h5" sx={{ px: 3, mt: 2 }}>
         {title}
       </Typography>
-      <Box sx={{ display: 'flex', justifyContent: 'center', py: 1 }}>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          pb: 1,
+          alignItems: 'center', // Ensures vertical center alignment
+          backgroundColor: 'background.paper', // Use theme for consistent background
+          borderRadius: '8px', // Optional: adds rounded corners
+          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', // Optional: adds subtle shadow
+        }}
+      >
         {weatherData ? (
           <>
             <img
-              src={`http://openweathermap.org/img/wn/${weatherData.icon}.png`}
+              src={`http://openweathermap.org/img/wn/${weatherData.icon}@2x.png`} // Use higher resolution
               alt={weatherData.description}
-              style={{ width: 65, height: 65, marginRight: '20px' }}
+              style={{
+                width: 85,
+                height: 85,
+                marginRight: '20px',
+                filter: 'drop-shadow(0px 0px 3px rgba(0,0,0,0.3))', // Adds shadow to the icon for depth
+              }}
             />
             <Typography variant="h3">{`${weatherData.temp.toFixed(1)}°C`}</Typography>
           </>
