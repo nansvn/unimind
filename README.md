@@ -2,7 +2,7 @@
 
 UniMind is a MERN full stack web-based app designed to help college students manage their mental health and academic life. 
 
-### Features
+## Features
 
 - **Real-time weather**
 - **Mood Tracking:** Log and manage daily moods.
@@ -11,14 +11,14 @@ UniMind is a MERN full stack web-based app designed to help college students man
 - **Personalized Insights:** Analytical graphs and charts based on user's mood logs and activities.
 - **General Suggestions:** Suggestions for maintaining mental well-being.
 
-### Under Development
+## Under Development
 
 - [ ]  **Personalized Advice**
 - [ ]  **Mood Scores**
 - [ ]  **University Calendar Integration**
 - [ ]  …
 
-### Preview
+## Preview
 <div align=center>
     
 ![Unimind-1.gif](https://github.com/nansvn/unimind/blob/main/video/Unimind-1.gif?raw=true)
@@ -28,9 +28,9 @@ UniMind is a MERN full stack web-based app designed to help college students man
 ![Unimind-3.gif](https://github.com/nansvn/unimind/blob/main/video/Unimind-3.gif?raw=true)
 </div>
 
-### **Getting Started**
+## **Getting Started**
 
-#### **Prerequisites**
+### **Prerequisites**
 
 Ensure you have the following installed:
 
@@ -38,7 +38,7 @@ Ensure you have the following installed:
 - MongoDB
 - Yarn or npm
 
-#### **Installation**
+### **Installation**
 
 1. Clone the repository:
     
