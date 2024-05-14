@@ -5,10 +5,10 @@ UniMind is a MERN full stack web-based app designed to help college students man
 ### Features
 
 - **Real-time weather**
-- **To-do List**
-- **Mood Tracking:** Log and manage your daily moods.
+- **Mood Tracking:** Log and manage daily moods.
 - **Calendar Integration:** Track important academic dates and deadlines.
-- **Personalized Insights:** Analytical graphs and charts based on mood logs.
+- **To-do Board:** Kanban style task tracking tool.
+- **Personalized Insights:** Analytical graphs and charts based on user's mood logs and activities.
 - **General Suggestions:** Suggestions for maintaining mental well-being.
 
 ### Under Development
