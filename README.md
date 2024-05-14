@@ -19,12 +19,14 @@ UniMind is a MERN full stack web-based app designed to help college students man
 - [ ]  …
 
 ### Preview
-
+<div align=center>
+    
 ![Unimind-1.gif](https://github.com/nansvn/unimind/blob/main/video/Unimind-1.gif?raw=true)
 
 ![Unimind-2.gif](https://github.com/nansvn/unimind/blob/main/video/Unimind-2.gif?raw=true)
 
 ![Unimind-3.gif](https://github.com/nansvn/unimind/blob/main/video/Unimind-3.gif?raw=true)
+</div>
 
 ### **Getting Started**
 
