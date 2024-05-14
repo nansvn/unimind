@@ -11,7 +11,7 @@ UniMind is a MERN full stack web-based app designed to help college students man
 - **Personalized Insights:** Analytical graphs and charts based on user's mood logs and activities.
 - **General Suggestions:** Suggestions for maintaining mental well-being.
 
-## Under Development
+### Under Development
 
 - [ ]  **Personalized Advice**
 - [ ]  **Mood Scores**
